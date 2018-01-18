@@ -10,7 +10,7 @@ Gamedistribution.com is the biggest broker of high quality, cross-platform games
 Running into any issues? Check out the F.A.Q. within the Wiki of the github repository before mailing to <a href="support@gamedistribution.com" target="_blank">support@gamedistribution.com</a>
 
 ## Implementation within games
- 1. Import the .unitypackage in to your game.
+ 1. Import the .unitypackage into your game.
  1. Drag the prefab "GameDistribution" into your scene.
  1. Replace the GAME_KEY and USER_ID values with your own keys.
  1. Use GameDistribution.Instance.ShowAd() to show an advertisement.
