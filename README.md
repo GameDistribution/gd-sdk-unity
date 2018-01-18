@@ -1,4 +1,8 @@
-# Gamedistribution Unity HTML5 plugin
+[![GitHub version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/GameDistribution/gd-sdk-unity/)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/GameDistribution/gd-sdk-unity/blob/master/LICENSE)
+
+
+# Gamedistribution.com Unity HTML5 plugin
 
 ## Setup:
  - Drag the prefab "GameDistribution" into your scene.
