@@ -3,7 +3,7 @@
 
 
 # Gamedistribution.com Unity HTML5 SDK plugin
-This is the documentation of the "Gamedistribution.com Unity HTML5 SDK plugin" project.
+This is the documentation of the "Gamedistribution.com Unity HTML5 SDK plugin" project for adding the SDK within your <strong>Unity WebGL</strong> game.
 
 Gamedistribution.com is the biggest broker of high quality, cross-platform games. We connect the best game developers to the biggest publishers.
 
