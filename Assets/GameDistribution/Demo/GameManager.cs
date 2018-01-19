@@ -1,20 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
-    public static GameManager Instance;
-
-    private void Awake()
-    {
-        if (GameManager.Instance == null)
-            GameManager.Instance = this;
-        else
-            Destroy(this);
-    }
 
     public Text infoText;
+
+    void Awake()
+    {
+        GameDistribution.OnResumeGame += ResumeGame;
+        GameDistribution.OnPauseGame += PauseGame;
+    }
 
     public void ResumeGame()
     {

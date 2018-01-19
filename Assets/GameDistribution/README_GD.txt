@@ -14,6 +14,12 @@ public class ExampleClass: MonoBehaviour {
 	  GameDistribution.OnResumeGame += ResumeGame;
 	  GameDistribution.OnPauseGame += PauseGame;
 	}
+	
+	void OnDestroy()
+	{
+	  GameDistribution.OnResumeGame -= ResumeGame;
+	  GameDistribution.OnPauseGame -= PauseGame;
+	}
 
 	public void ResumeGame()
 	{

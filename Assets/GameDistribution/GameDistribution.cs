@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class GameDistribution : MonoBehaviour {
-
+public class GameDistribution : MonoBehaviour
+{
     public static GameDistribution Instance;
 
     public string GAME_KEY = "YOUR_GAME_KEY_HERE";
     public string USER_ID = "YOUR_USER_ID_HERE";
 
-    public Action OnResumeGame;
-    public Action OnPauseGame;
+    public static Action OnResumeGame;
+    public static Action OnPauseGame;
 
     [DllImport("__Internal")]
     private static extern void InitApi(string gameKey, string userId);
@@ -29,12 +29,31 @@ public class GameDistribution : MonoBehaviour {
 
         DontDestroyOnLoad(this);
 
-        InitApi(GAME_KEY, USER_ID);
+        Init();
     }
 
+    void Init()
+    {
+        try
+        {
+            InitApi(GAME_KEY, USER_ID);
+        }
+        catch (EntryPointNotFoundException e)
+        {
+            Debug.LogWarning("GD initialization failed. Make sure you are running a WebGL build in a browser");
+        }
+    }
+    
     internal void ShowAd()
     {
-       ShowBanner();
+        try
+        {
+            ShowBanner();
+        }
+        catch (EntryPointNotFoundException e)
+        {
+            Debug.LogWarning("GD ShowBanner failed. Make sure you are running a WebGL build in a browser");
+        }
     }
 
     /// <summary>
@@ -42,7 +61,7 @@ public class GameDistribution : MonoBehaviour {
     /// </summary>
     void ResumeGame()
     {
-       if (OnResumeGame!= null) OnResumeGame();
+       if (OnResumeGame != null) OnResumeGame();
     }
 
     /// <summary>
@@ -50,6 +69,6 @@ public class GameDistribution : MonoBehaviour {
     /// </summary>
     void PauseGame()
     {
-        if (OnPauseGame != null) OnPauseGame();
+        if(OnPauseGame != null) OnPauseGame();
     }
 }
