@@ -1,7 +1,7 @@
 ﻿var functions = {
 	InitApi: function(gameKey, userId) {
 	 window["GD_OPTIONS"] = {
-        "debug": true, // Enable debugging console. This will set a value in local storage as well, remove this value if you don't want debugging at all. You can also call it by running gdsdk.openConsole() within your browser console.
+        "debug": false, // Enable debugging console. This will set a value in local storage as well, remove this value if you don't want debugging at all. You can also call it by running gdsdk.openConsole() within your browser console.
         "gameId": "49258a0e497c42b5b5d87887f24d27a6", // Your gameId which is unique for each one of your games; can be found at your Gamedistribution.com account.
         "userId": "ABD36C6C-E74B-4BA7-BE87-0AB01F98D30D-s1", // Your userId which can be found at your Gamedistribution.com account.
         "advertisementSettings": {
