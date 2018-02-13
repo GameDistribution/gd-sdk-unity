@@ -1,5 +1,9 @@
 ﻿var functions = {
 	InitApi: function(gameKey, userId) {
+	
+	gameKey = Pointer_stringify(gameKey);
+	userId = Pointer_stringify(userId);
+	
 	 window["GD_OPTIONS"] = {
         "debug": false, // Enable debugging console. This will set a value in local storage as well, remove this value if you don't want debugging at all. You can also call it by running gdsdk.openConsole() within your browser console.
         "gameId": gameKey, // Your gameId which is unique for each one of your games; can be found at your Gamedistribution.com account.
@@ -12,6 +16,8 @@
                 case "SDK_GAME_PAUSE":
                     SendMessage('GameDistribution', 'PauseGame');
                     break;
+				case "SDK_ERROR":					
+					break;
             }
         },
     };
