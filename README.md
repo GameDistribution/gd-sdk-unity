@@ -1,7 +1,7 @@
+![](https://i.imgur.com/TiysCcT.png)
+
 [![GitHub version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/GameDistribution/gd-sdk-unity/)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/GameDistribution/gd-sdk-unity/blob/master/LICENSE)
-
-![](https://i.imgur.com/TiysCcT.png)
 
 # Gamedistribution.com Unity HTML5 SDK plugin
 This is the documentation of the "Gamedistribution.com Unity HTML5 SDK plugin" project for adding the SDK within your <strong>Unity WebGL</strong> game.
