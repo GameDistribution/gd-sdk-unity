@@ -14,7 +14,7 @@ Running into any issues? Check out the F.A.Q. within the Wiki of the github repo
 
  1. Import the .unitypackage into your game.
 ![](https://i.imgur.com/GlfyZ3R.png)
-![](https://i.imgur.com/qo4MTUA.png)
+![](https://i.imgur.com/xIF3Ce2.png)
  1. Drag the prefab "GameDistribution" into your scene.
  1. Copy your GAME_KEY and USER_ID (<-deprecated) within your Gamedistribution control.
 ![](https://i.imgur.com/Zvkkaek.png)
