@@ -11,11 +11,19 @@ Gamedistribution.com is the biggest broker of high quality, cross-platform games
 Running into any issues? Check out the F.A.Q. within the Wiki of the github repository before mailing to <a href="support@gamedistribution.com" target="_blank">support@gamedistribution.com</a>
 
 ## Implementation within games
+
  1. Import the .unitypackage into your game.
+![](https://i.imgur.com/GlfyZ3R.png)
+![](https://i.imgur.com/qo4MTUA.png)
  1. Drag the prefab "GameDistribution" into your scene.
- 1. Open the prefab and replace the GAME_KEY and USER_ID values with your own keys.
+ 1. Copy your GAME_KEY and USER_ID (<-deprecated) within your Gamedistribution control.
+![](https://i.imgur.com/Zvkkaek.png)
+ 1. Open the prefab and replace the GAME_KEY and USER_ID (<- deprecated) values with your own keys.
+![](https://i.imgur.com/1Ekjy2N.png)
  1. Use GameDistribution.Instance.ShowAd() to show an advertisement.
+![](https://i.imgur.com/czTCVIS.png)
  1. Make use of the events `GameDistribution.OnResumeGame` and `GameDistribution.OnPauseGame` for resuming/pausing your game in between ads.
+
 
 ### Example:
 
