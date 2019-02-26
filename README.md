@@ -13,7 +13,7 @@ Running into any issues? Check out the F.A.Q. within the Wiki of the github repo
 ## Implementation within games
  1. Import the .unitypackage into your game.
  1. Drag the prefab "GameDistribution" into your scene.
- 1. Replace the GAME_KEY and USER_ID values with your own keys.
+ 1. Open the prefab and replace the GAME_KEY and USER_ID values with your own keys.
  1. Use GameDistribution.Instance.ShowAd() to show an advertisement.
  1. Make use of the events `GameDistribution.OnResumeGame` and `GameDistribution.OnPauseGame` for resuming/pausing your game in between ads.
 
