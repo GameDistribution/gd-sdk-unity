@@ -16,7 +16,8 @@ Running into any issues? Check out the F.A.Q. within the Wiki of the github repo
 ![](https://i.imgur.com/GlfyZ3R.png)
 ![](https://i.imgur.com/xIF3Ce2.png)
  1. Drag the prefab "GameDistribution" into your scene.
- 1. Copy your GAME_KEY and USER_ID (<-deprecated) within your Gamedistribution control.
+![](https://i.imgur.com/gws3xyQ.png)
+ 1. Copy your GAME_KEY and USER_ID (<-deprecated) in your GameDistribution developer's control panel (in the 'Upload' tab), at <a href="https://developer.gamedistribution.com">developer.gamedistribution.com</a>
 ![](https://i.imgur.com/Zvkkaek.png)
  1. Open the prefab and replace the GAME_KEY and USER_ID (<- deprecated) values with your own keys.
 ![](https://i.imgur.com/1Ekjy2N.png)
