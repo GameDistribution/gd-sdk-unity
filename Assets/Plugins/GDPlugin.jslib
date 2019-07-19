@@ -35,10 +35,10 @@
     ) {
       gdsdk.preloadAd(adType || gdsdk.AdType.Rewarded)
         .then(function(response){
-          SendMessage("GameDistribution", "PreloadAdCallback",true);
+          SendMessage("GameDistribution", "PreloadAdCallback",1);
         })
         .catch(function(error){
-          SendMessage("GameDistribution", "PreloadAdCallback",false);
+          SendMessage("GameDistribution", "PreloadAdCallback",0);
         });
     }
   },
