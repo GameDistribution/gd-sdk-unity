@@ -63,8 +63,8 @@ public class ExampleClass: MonoBehaviour {
 
     public void OnPreloadAd(int loaded)
     {
-        // FEEDBACK ABOUT PRELOADING AD
-	// 0: SDK couldn't preloaded ad
+        // Feedback about preloading ad after called GameDistribution.Instance.PreloadAd
+	// 0: SDK couldn't preload ad
 	// 1: SDK preloaded ad
     }
     
