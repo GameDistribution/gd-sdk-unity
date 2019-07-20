@@ -5,6 +5,7 @@ Setup:
  - Replace the GAME_KEY value with your own keys
  - Use GameDistribution.Instance.ShowAd() to show an interstitial advertisement
  - Use GameDistribution.Instance.ShowAd("rewarded") to show a rewarded advertisement
+ - Use GameDistribution.Instance.PreloadAd("rewarded") to preload a rewarded advertisement
  - Make use of the events GameDistribution.OnResumeGame and GameDistribution.OnPauseGame for resuming/pausing your game in between ads
  - Make use of the event GameDistribution.OnPreloadAd for checking the availability of rewarded advertisement after called GameDistribution.Instance.PreloadAd("rewarded")
 
@@ -31,7 +32,7 @@ public class ExampleClass: MonoBehaviour {
 
     public void OnPreloadAd(int loaded)
     {
-        // FEEDBACK ABOUT PRELOADED AD
+        // FEEDBACK ABOUT PRELOADING AD
 		// 0: SDK couldn't preloaded ad
 		// 1: SDK preloaded ad
     }
