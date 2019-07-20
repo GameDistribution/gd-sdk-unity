@@ -9,16 +9,19 @@ public class GameDistribution : MonoBehaviour
     public static GameDistribution Instance;
 
     public string GAME_KEY = "YOUR_GAME_KEY_HERE";
-    public string USER_ID = "YOUR_USER_ID_HERE";
-
+    
     public static Action OnResumeGame;
     public static Action OnPauseGame;
+    public static Action<int> OnPreloadAd;
 
     [DllImport("__Internal")]
-    private static extern void InitApi(string gameKey, string userId);
+    private static extern void SDK_Init(string gameKey);
 
     [DllImport("__Internal")]
-    private static extern void ShowBanner();
+    private static extern void SDK_PreloadAd(string adType);
+
+    [DllImport("__Internal")]
+    private static extern void SDK_ShowAd(string adType);
 
     void Awake()
     {
@@ -36,39 +39,57 @@ public class GameDistribution : MonoBehaviour
     {
         try
         {
-            InitApi(GAME_KEY, USER_ID);
+            SDK_Init(GAME_KEY);
         }
         catch (EntryPointNotFoundException e)
         {
-            Debug.LogWarning("GD initialization failed. Make sure you are running a WebGL build in a browser");
+            Debug.LogWarning("GD initialization failed. Make sure you are running a WebGL build in a browser:"+e.Message);
         }
-    }
-    
-    internal void ShowAd()
+    }   
+    internal void ShowAd(string adType)
     {
         try
         {
-            ShowBanner();
+            SDK_ShowAd(adType);
         }
         catch (EntryPointNotFoundException e)
         {
-            Debug.LogWarning("GD ShowBanner failed. Make sure you are running a WebGL build in a browser");
+            Debug.LogWarning("GD ShowAd failed. Make sure you are running a WebGL build in a browser:"+e.Message);
         }
     }
 
+    internal void PreloadAd(string adType)
+    {
+        try
+        {
+            SDK_PreloadAd(adType);
+        }
+        catch (EntryPointNotFoundException e)
+        {
+            Debug.LogWarning("GD Preload failed. Make sure you are running a WebGL build in a browser:"+e.Message);
+        }
+    }
     /// <summary>
-    /// Resume the game, this method is used when an ad has been showed
+    /// It is being called by HTML5 SDK when the game should start.
     /// </summary>
-    void ResumeGame()
+    void ResumeGameCallback()
     {
        if (OnResumeGame != null) OnResumeGame();
     }
 
     /// <summary>
-    /// Pause the game, this method is used when we show an ad
+    /// It is being called by HTML5 SDK when the game should pause.
     /// </summary>
-    void PauseGame()
+    void PauseGameCallback()
     {
         if(OnPauseGame != null) OnPauseGame();
+    }
+
+    /// <summary>
+    /// It is being called by HTML5 SDK when it preloaded ad
+    /// </summary>
+    void PreloadAdCallback(int loaded)
+    {
+        if(OnPreloadAd != null) OnPreloadAd(loaded);
     }
 }
