@@ -29,9 +29,9 @@ public class GameManager : MonoBehaviour
     public void OnPreloadAd(int loaded)
     {
         // FEEDBACK ABOUT PRELOADED AD
-        infoText.text = loaded>0 ? "GAME PRELOADED AD" : "GAME DIDN'T PRELOAD AD";
+        infoText.text =loaded>0 ? "SDK PRELOADED AD" : "SDK COULDN'T PRELOAD AD";
     }
-
+    
     public void ShowAd(string adType)
     {
         GameDistribution.Instance.ShowAd(adType);

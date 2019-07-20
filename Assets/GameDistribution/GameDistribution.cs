@@ -45,8 +45,7 @@ public class GameDistribution : MonoBehaviour
         {
             Debug.LogWarning("GD initialization failed. Make sure you are running a WebGL build in a browser:"+e.Message);
         }
-    }
-    
+    }   
     internal void ShowAd(string adType)
     {
         try
@@ -87,7 +86,7 @@ public class GameDistribution : MonoBehaviour
     }
 
     /// <summary>
-    /// It is being called as a response when PreloadAd has been called
+    /// It is being called by HTML5 SDK when it preloaded ad
     /// </summary>
     void PreloadAdCallback(int loaded)
     {

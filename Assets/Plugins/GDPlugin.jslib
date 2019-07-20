@@ -33,7 +33,9 @@
       typeof gdsdk !== "undefined" &&
       typeof gdsdk.preloadAd !== "undefined"
     ) {
-      gdsdk.preloadAd(adType || gdsdk.AdType.Rewarded)
+      adType=Pointer_stringify(adType)||gdsdk.AdType.Rewarded;
+
+      gdsdk.preloadAd(adType)
         .then(function(response){
           SendMessage("GameDistribution", "PreloadAdCallback",1);
         })
@@ -45,7 +47,9 @@
 
   SDK_ShowAd: function(adType) {
     if (typeof gdsdk !== "undefined" && typeof gdsdk.showAd !== "undefined") {
-      gdsdk.showAd(adType||gdsdk.AdType.Interstitial);
+      adType=Pointer_stringify(adType)||gdsdk.AdType.Interstitial;
+
+      gdsdk.showAd(adType);
     }
   }
 };
