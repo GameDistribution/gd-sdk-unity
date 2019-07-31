@@ -9,7 +9,7 @@ public class GameDistribution : MonoBehaviour
     public static GameDistribution Instance;
 
     public string GAME_KEY = "YOUR_GAME_KEY_HERE";
-    
+
     public static Action OnResumeGame;
     public static Action OnPauseGame;
     public static Action<int> OnPreloadAd;
@@ -18,7 +18,7 @@ public class GameDistribution : MonoBehaviour
     private static extern void SDK_Init(string gameKey);
 
     [DllImport("__Internal")]
-    private static extern void SDK_PreloadAd(string adType);
+    private static extern void SDK_PreloadAd();
 
     [DllImport("__Internal")]
     private static extern void SDK_ShowAd(string adType);
@@ -43,30 +43,42 @@ public class GameDistribution : MonoBehaviour
         }
         catch (EntryPointNotFoundException e)
         {
-            Debug.LogWarning("GD initialization failed. Make sure you are running a WebGL build in a browser:"+e.Message);
+            Debug.LogWarning("GD initialization failed. Make sure you are running a WebGL build in a browser:" + e.Message);
         }
-    }   
-    internal void ShowAd(string adType)
+    }
+    internal void ShowAd()
     {
         try
         {
-            SDK_ShowAd(adType);
+            SDK_ShowAd(null);
         }
         catch (EntryPointNotFoundException e)
         {
-            Debug.LogWarning("GD ShowAd failed. Make sure you are running a WebGL build in a browser:"+e.Message);
+            Debug.LogWarning("GD ShowAd failed. Make sure you are running a WebGL build in a browser:" + e.Message);
         }
     }
 
-    internal void PreloadAd(string adType)
+    internal void ShowRewardedAd()
     {
         try
         {
-            SDK_PreloadAd(adType);
+            SDK_ShowAd("rewarded");
         }
         catch (EntryPointNotFoundException e)
         {
-            Debug.LogWarning("GD Preload failed. Make sure you are running a WebGL build in a browser:"+e.Message);
+            Debug.LogWarning("GD ShowAd failed. Make sure you are running a WebGL build in a browser:" + e.Message);
+        }
+    }
+
+    internal void PreloadRewardedAd()
+    {
+        try
+        {
+            SDK_PreloadAd();
+        }
+        catch (EntryPointNotFoundException e)
+        {
+            Debug.LogWarning("GD Preload failed. Make sure you are running a WebGL build in a browser:" + e.Message);
         }
     }
     /// <summary>
@@ -74,7 +86,7 @@ public class GameDistribution : MonoBehaviour
     /// </summary>
     void ResumeGameCallback()
     {
-       if (OnResumeGame != null) OnResumeGame();
+        if (OnResumeGame != null) OnResumeGame();
     }
 
     /// <summary>
@@ -82,7 +94,7 @@ public class GameDistribution : MonoBehaviour
     /// </summary>
     void PauseGameCallback()
     {
-        if(OnPauseGame != null) OnPauseGame();
+        if (OnPauseGame != null) OnPauseGame();
     }
 
     /// <summary>
@@ -90,6 +102,6 @@ public class GameDistribution : MonoBehaviour
     /// </summary>
     void PreloadAdCallback(int loaded)
     {
-        if(OnPreloadAd != null) OnPreloadAd(loaded);
+        if (OnPreloadAd != null) OnPreloadAd(loaded);
     }
 }

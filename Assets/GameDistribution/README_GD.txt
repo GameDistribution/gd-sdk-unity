@@ -4,8 +4,8 @@ Setup:
  - Drag the prefab "GameDistribution" into your scene
  - Replace the GAME_KEY value with your own keys
  - Use GameDistribution.Instance.ShowAd() to show an interstitial advertisement
- - Use GameDistribution.Instance.ShowAd("rewarded") to show a rewarded advertisement
- - Use GameDistribution.Instance.PreloadAd("rewarded") to preload a rewarded advertisement
+ - Use GameDistribution.Instance.ShowRewardedAd() to show a rewarded advertisement
+ - Use GameDistribution.Instance.PreloadRewaredAd() to preload a rewarded advertisement
  - Make use of the events GameDistribution.OnResumeGame and GameDistribution.OnPauseGame for resuming/pausing your game in between ads
  - Make use of the event GameDistribution.OnPreloadAd for checking the availability of rewarded advertisement after called GameDistribution.Instance.PreloadAd("rewarded")
 
@@ -37,13 +37,18 @@ public class ExampleClass: MonoBehaviour {
 		// 1: SDK preloaded ad
     }
     
-    public void ShowAd(string adType)
+    public void ShowAd()
     {
-        GameDistribution.Instance.ShowAd(adType);
+        GameDistribution.Instance.ShowAd();
     }
 
-    public void PreloadAd(string adType)
+    public void ShowRewardedAd()
     {
-        GameDistribution.Instance.PreloadAd(adType);
+        GameDistribution.Instance.ShowRewardedAd();
+    }
+
+    public void PreloadRewardedAd()
+    {
+        GameDistribution.Instance.PreloadRewardedAd();
     }
 }

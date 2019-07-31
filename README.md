@@ -4,40 +4,41 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/GameDistribution/gd-sdk-unity/blob/master/LICENSE)
 
 # Gamedistribution.com Unity HTML5 SDK plugin
+
 This is the documentation of the "Gamedistribution.com Unity HTML5 SDK plugin" project for adding the SDK within your <strong>Unity WebGL</strong> game.
 
 Gamedistribution.com is the biggest broker of high quality, cross-platform games. We connect the best game developers to the biggest publishers.
 
-Running into any issues? 
+Running into any issues?
 
 Check out the F.A.Q. within the Wiki of the github repository before mailing to support@gamedistribution.com.
 
 ## Implementation within games
 
- 1. Download and import the .unitypackage into your game (download [here](https://github.com/GameDistribution/gd-sdk-unity/raw/master/GameDistribution_Unity.unitypackage)).
-![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/1.png)
-![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/2.png)
+1.  Download and import the .unitypackage into your game (download [here](https://github.com/GameDistribution/gd-sdk-unity/raw/master/GameDistribution_Unity.unitypackage)).
+    ![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/1.png)
+    ![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/2.png)
 
- 1. Drag the prefab "GameDistribution" into your scene.
-![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/3.png)
+1.  Drag the prefab "GameDistribution" into your scene.
+    ![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/3.png)
 
- 1. Copy your GAME_KEY in your GameDistribution developer's control panel (in the 'Upload' tab), at <a href="https://developer.gamedistribution.com" target="_blank">developer.gamedistribution.com</a>
+1.  Copy your GAME_KEY in your GameDistribution developer's control panel (in the 'Upload' tab), at <a href="https://developer.gamedistribution.com" target="_blank">developer.gamedistribution.com</a>
 
- 1. Open the prefab and replace the GAME_KEY value with your own key.
-![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/4.png)
+1.  Open the prefab and replace the GAME_KEY value with your own key.
+    ![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/4.png)
 
- 1. Use GameDistribution.Instance.ShowAd() to show an advertisement.
-![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/5.png)
+1.  Use GameDistribution.Instance.ShowAd() to show an advertisement.
+    ![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/5.png)
 
- 1. Use GameDistribution.Instance.ShowAd("rewarded") to show a rewarded advertisement.
-![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/6.png)
- 
- 1. Use GameDistribution.Instance.PreloadAd("rewarded") to preload a rewarded advertisement
-![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/7.png)
+1.  Use GameDistribution.Instance.ShowRewardedAd() to show a rewarded advertisement.
+    ![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/6.png)
 
- 1. Make use of the events `GameDistribution.OnResumeGame` and `GameDistribution.OnPauseGame` for resuming/pausing your game in between ads.
+1.  Use GameDistribution.Instance.PreloadRewardedAd() to preload a rewarded advertisement
+    ![](https://static.gamedistribution.com/wiki/gd-html5-sdk-unity-plugin/7.png)
 
- 1. Make use of the event GameDistribution.OnPreloadAd for checking the availability of rewarded advertisement after called GameDistribution.Instance.PreloadAd("rewarded")
+1.  Make use of the events `GameDistribution.OnResumeGame` and `GameDistribution.OnPauseGame` for resuming/pausing your game in between ads.
+
+1.  Make use of the event GameDistribution.OnPreloadAd for checking the availability of rewarded advertisement after called GameDistribution.Instance.PreloadRewardedAd()
 
 ### Example:
 
@@ -67,15 +68,15 @@ public class ExampleClass: MonoBehaviour {
 	// 0: SDK couldn't preload ad
 	// 1: SDK preloaded ad
     }
-    
-    public void ShowAd(string adType)
+
+    public void ShowAd()
     {
-        GameDistribution.Instance.ShowAd(adType);
+        GameDistribution.Instance.ShowRewardedAd();
     }
 
-    public void PreloadAd(string adType)
+    public void PreloadRewardedAd()
     {
-        GameDistribution.Instance.PreloadAd(adType);
+        GameDistribution.Instance.PreloadRewardedAd();
     }
 }
 ```
