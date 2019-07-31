@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     public Text infoText;
-    
+
     void Awake()
     {
         GameDistribution.OnResumeGame += OnResumeGame;
@@ -29,16 +29,22 @@ public class GameManager : MonoBehaviour
     public void OnPreloadAd(int loaded)
     {
         // FEEDBACK ABOUT PRELOADED AD
-        infoText.text =loaded>0 ? "SDK PRELOADED AD" : "SDK COULDN'T PRELOAD AD";
-    }
-    
-    public void ShowAd(string adType)
-    {
-        GameDistribution.Instance.ShowAd(adType);
+        infoText.text = loaded > 0 ? "SDK PRELOADED AD" : "SDK COULDN'T PRELOAD AD";
     }
 
-    public void PreloadAd(string adType)
+    public void ShowAd()
     {
-        GameDistribution.Instance.PreloadAd(adType);
+        GameDistribution.Instance.ShowAd();
+    }
+
+    public void ShowRewardedAd()
+    {
+        GameDistribution.Instance.ShowRewardedAd();
+    }
+
+
+    public void PreloadRewardedAd()
+    {
+        GameDistribution.Instance.PreloadRewardedAd();
     }
 }

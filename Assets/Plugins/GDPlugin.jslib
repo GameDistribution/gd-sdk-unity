@@ -28,14 +28,12 @@
     })(document, "script", "gamedistribution-jssdk");
   },
 
-  SDK_PreloadAd: function(adType) {
+  SDK_PreloadAd: function() {
     if (
       typeof gdsdk !== "undefined" &&
       typeof gdsdk.preloadAd !== "undefined"
     ) {
-      adType=Pointer_stringify(adType)||gdsdk.AdType.Rewarded;
-
-      gdsdk.preloadAd(adType)
+      gdsdk.preloadAd(gdsdk.AdType.Rewarded)
         .then(function(response){
           SendMessage("GameDistribution", "PreloadAdCallback",1);
         })
