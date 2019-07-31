@@ -80,3 +80,26 @@ public class ExampleClass: MonoBehaviour {
     }
 }
 ```
+
+## Best Practice for Rewarded Ads
+
+You can use multiple ad slots for rewarded ads and give your players multiple way of gathering rewards. Samples below is very nice way of implementing this feature.
+
+`Let them watch an ad to increase their attacks!` <br>
+<img src="https://static.gamedistribution.com/wiki/rewarded-usage-1.png" width="70%">
+<br>
+
+`No coin no pain? Oh, it is not. Let them gain some free coins.` <br>
+<img src="https://static.gamedistribution.com/wiki/rewarded-usage-2.png" width="70%">
+<br>
+
+`Who doesn't want a second chance?` <br>
+<img src="https://static.gamedistribution.com/wiki/rewarded-usage-3.png" width="70%">
+<br>
+
+`Your players can take their chances to gain some buffs!` <br>
+<img src="https://static.gamedistribution.com/wiki/rewarded-usage-4.png" width="70%">
+<br>
+
+`You can give away some daily gifts to your players.` <br>
+<img src="https://static.gamedistribution.com/wiki/rewarded-usage-5.png" width="70%">
