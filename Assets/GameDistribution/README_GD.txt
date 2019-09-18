@@ -7,7 +7,7 @@ Setup:
  - Use GameDistribution.Instance.ShowRewardedAd() to show a rewarded advertisement
  - Use GameDistribution.Instance.PreloadRewaredAd() to preload a rewarded advertisement
  - Make use of the events GameDistribution.OnResumeGame and GameDistribution.OnPauseGame for resuming/pausing your game in between ads
- - Make use of the event GameDistribution.OnPreloadAd for checking the availability of rewarded advertisement after called GameDistribution.Instance.PreloadAd("rewarded")
+ - Make use of the event GameDistribution.OnPreloadRewardedVideo for checking the availability of rewarded advertisement after called GameDistribution.Instance.PreloadAd("rewarded")
 
 Example:
 
@@ -17,7 +17,7 @@ public class ExampleClass: MonoBehaviour {
     {
         GameDistribution.OnResumeGame += OnResumeGame;
         GameDistribution.OnPauseGame += OnPauseGame;
-        GameDistribution.OnPreloadAd += OnPreloadAd;
+        GameDistribution.OnPreloadRewardedVideo += OnPreloadRewardedVideo;
     }
 
     public void OnResumeGame()
@@ -30,7 +30,7 @@ public class ExampleClass: MonoBehaviour {
         // PAUSE MY GAME
     }
 
-    public void OnPreloadAd(int loaded)
+    public void OnPreloadRewardedVideo(int loaded)
     {
         // FEEDBACK ABOUT PRELOADING AD
 		// 0: SDK couldn't preloaded ad

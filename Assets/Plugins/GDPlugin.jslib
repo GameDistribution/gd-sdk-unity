@@ -35,10 +35,10 @@
     ) {
       gdsdk.preloadAd(gdsdk.AdType.Rewarded)
         .then(function(response){
-          SendMessage("GameDistribution", "PreloadAdCallback",1);
+          SendMessage("GameDistribution", "PreloadRewardedVideoCallback",1);
         })
         .catch(function(error){
-          SendMessage("GameDistribution", "PreloadAdCallback",0);
+          SendMessage("GameDistribution", "PreloadRewardedVideoCallback",0);
         });
     }
   },
@@ -47,7 +47,17 @@
     if (typeof gdsdk !== "undefined" && typeof gdsdk.showAd !== "undefined") {
       adType=Pointer_stringify(adType)||gdsdk.AdType.Interstitial;
 
-      gdsdk.showAd(adType);
+      gdsdk.showAd(adType)
+      .then(function(response){
+        if(adType===gdsdk.AdType.Rewarded){
+          SendMessage("GameDistribution", "RewardedVideoSuccessCallback");
+        }
+      })
+      .catch(function(error){
+        if(adType===gdsdk.AdType.Rewarded){
+          SendMessage("GameDistribution", "RewardedVideoFailureCallback");
+        }
+      });
     }
   }
 };

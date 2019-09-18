@@ -38,7 +38,7 @@ Check out the F.A.Q. within the Wiki of the github repository before mailing to 
 
 1.  Make use of the events `GameDistribution.OnResumeGame` and `GameDistribution.OnPauseGame` for resuming/pausing your game in between ads.
 
-1.  Make use of the event GameDistribution.OnPreloadAd for checking the availability of rewarded advertisement after called GameDistribution.Instance.PreloadRewardedAd()
+1.  Make use of the event GameDistribution.OnPreloadRewardedVideo for checking the availability of rewarded advertisement after called GameDistribution.Instance.PreloadRewardedAd()
 
 ### Example:
 
@@ -49,7 +49,7 @@ public class ExampleClass: MonoBehaviour {
     {
         GameDistribution.OnResumeGame += OnResumeGame;
         GameDistribution.OnPauseGame += OnPauseGame;
-        GameDistribution.OnPreloadAd += OnPreloadAd;
+        GameDistribution.OnPreloadRewardedVideo += OnPreloadRewardedVideo;
     }
 
     public void OnResumeGame()
@@ -62,7 +62,7 @@ public class ExampleClass: MonoBehaviour {
         // PAUSE MY GAME
     }
 
-    public void OnPreloadAd(int loaded)
+    public void OnPreloadRewardedVideo(int loaded)
     {
         // Feedback about preloading ad after called GameDistribution.Instance.PreloadAd
 	// 0: SDK couldn't preload ad

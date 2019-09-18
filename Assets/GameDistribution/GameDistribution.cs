@@ -12,7 +12,9 @@ public class GameDistribution : MonoBehaviour
 
     public static Action OnResumeGame;
     public static Action OnPauseGame;
-    public static Action<int> OnPreloadAd;
+    public static Action OnRewardedVideoSuccess;
+    public static Action OnRewardedVideoFailure;
+    public static Action<int> OnPreloadRewardedVideo;
 
     [DllImport("__Internal")]
     private static extern void SDK_Init(string gameKey);
@@ -22,6 +24,8 @@ public class GameDistribution : MonoBehaviour
 
     [DllImport("__Internal")]
     private static extern void SDK_ShowAd(string adType);
+
+    private bool _isRewardedVideoLoaded = false;
 
     void Awake()
     {
@@ -98,10 +102,37 @@ public class GameDistribution : MonoBehaviour
     }
 
     /// <summary>
-    /// It is being called by HTML5 SDK when it preloaded ad
+    /// It is being called by HTML5 SDK when the rewarded video succeeded.
     /// </summary>
-    void PreloadAdCallback(int loaded)
+    void RewardedVideoSuccessCallback()
     {
-        if (OnPreloadAd != null) OnPreloadAd(loaded);
+        _isRewardedVideoLoaded = false;
+
+        if (OnRewardedVideoSuccess != null) OnRewardedVideoSuccess();
+    }
+
+    /// <summary>
+    /// It is being called by HTML5 SDK when the rewarded video failed.
+    /// </summary>
+    void RewardedVideoFailureCallback()
+    {
+        _isRewardedVideoLoaded = false;
+        
+        if (OnRewardedVideoFailure != null) OnRewardedVideoFailure();
+    }
+
+    /// <summary>
+    /// It is being called by HTML5 SDK when it preloaded rewarded video
+    /// </summary>
+    void PreloadRewardedVideoCallback(int loaded)
+    {
+        _isRewardedVideoLoaded = (loaded == 1);
+
+        if (OnPreloadRewardedVideo != null) OnPreloadRewardedVideo(loaded);
+    }
+
+    public bool IsRewardedVideoLoaded()
+    {
+        return _isRewardedVideoLoaded;
     }
 }
