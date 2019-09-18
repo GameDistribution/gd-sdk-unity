@@ -50,6 +50,8 @@ public class ExampleClass: MonoBehaviour {
         GameDistribution.OnResumeGame += OnResumeGame;
         GameDistribution.OnPauseGame += OnPauseGame;
         GameDistribution.OnPreloadRewardedVideo += OnPreloadRewardedVideo;
+        GameDistribution.OnRewardedVideoSuccess += OnRewardedVideoSuccess;
+        GameDistribution.OnRewardedVideoFailure += OnRewardedVideoFailure;
     }
 
     public void OnResumeGame()
@@ -62,14 +64,29 @@ public class ExampleClass: MonoBehaviour {
         // PAUSE MY GAME
     }
 
+    public void OnRewardedVideoSuccess()
+    {
+        // Rewarded video succeeded/completed.;
+    }
+
+    public void OnRewardedVideoFailure()
+    {
+        // Rewarded video failed.;
+    }
+
     public void OnPreloadRewardedVideo(int loaded)
     {
-        // Feedback about preloading ad after called GameDistribution.Instance.PreloadAd
-	// 0: SDK couldn't preload ad
-	// 1: SDK preloaded ad
+        // Feedback about preloading ad after called GameDistribution.Instance.PreloadRewardedAd
+        // 0: SDK couldn't preload ad
+        // 1: SDK preloaded ad
     }
 
     public void ShowAd()
+    {
+        GameDistribution.Instance.ShowAd();
+    }
+
+    public void ShowRewardedAd()
     {
         GameDistribution.Instance.ShowRewardedAd();
     }
