@@ -1,4 +1,4 @@
-﻿var functions = {
+var functions = {
   SDK_Init: function(gameKey) {
     gameKey = Pointer_stringify(gameKey);
     window["GD_OPTIONS"] = {
@@ -42,20 +42,20 @@
         });
     }
   },
-
-  SDK_ShowAd: function(adType) {
+ 
+  SDK_ShowAd: function(adType, id) {
     if (typeof gdsdk !== "undefined" && typeof gdsdk.showAd !== "undefined") {
       adType=Pointer_stringify(adType)||gdsdk.AdType.Interstitial;
-
+	  id = Pointer_stringify(id);
       gdsdk.showAd(adType)
       .then(function(response){
         if(adType===gdsdk.AdType.Rewarded){
-          SendMessage("GameDistribution", "RewardedVideoSuccessCallback");
+          SendMessage("GameDistribution", "RewardedVideoSuccessCallback", "" + id);
         }
       })
       .catch(function(error){
         if(adType===gdsdk.AdType.Rewarded){
-          SendMessage("GameDistribution", "RewardedVideoFailureCallback");
+          SendMessage("GameDistribution", "RewardedVideoFailureCallback", "" + id);
         }
       });
     }
