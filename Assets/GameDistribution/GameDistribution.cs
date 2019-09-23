@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -12,8 +12,8 @@ public class GameDistribution : MonoBehaviour
 
     public static Action OnResumeGame;
     public static Action OnPauseGame;
-    public static Action OnRewardedVideoSuccess;
-    public static Action OnRewardedVideoFailure;
+    public static Action<string> OnRewardedVideoSuccess;
+    public static Action<string> OnRewardedVideoFailure;
     public static Action<int> OnPreloadRewardedVideo;
 
     [DllImport("__Internal")]
@@ -23,7 +23,7 @@ public class GameDistribution : MonoBehaviour
     private static extern void SDK_PreloadAd();
 
     [DllImport("__Internal")]
-    private static extern void SDK_ShowAd(string adType);
+    private static extern void SDK_ShowAd(string adType, string id);
 
     private bool _isRewardedVideoLoaded = false;
 
@@ -54,7 +54,7 @@ public class GameDistribution : MonoBehaviour
     {
         try
         {
-            SDK_ShowAd(null);
+            SDK_ShowAd(null, null);
         }
         catch (EntryPointNotFoundException e)
         {
@@ -62,11 +62,11 @@ public class GameDistribution : MonoBehaviour
         }
     }
 
-    internal void ShowRewardedAd()
+    internal void ShowRewardedAd(string id)
     {
         try
         {
-            SDK_ShowAd("rewarded");
+            SDK_ShowAd("rewarded", id);
         }
         catch (EntryPointNotFoundException e)
         {
@@ -104,21 +104,22 @@ public class GameDistribution : MonoBehaviour
     /// <summary>
     /// It is being called by HTML5 SDK when the rewarded video succeeded.
     /// </summary>
-    void RewardedVideoSuccessCallback()
+    void RewardedVideoSuccessCallback(string id)
     {
+        Debug.Log("Received callback from GDSDK " + id);
         _isRewardedVideoLoaded = false;
 
-        if (OnRewardedVideoSuccess != null) OnRewardedVideoSuccess();
+        if (OnRewardedVideoSuccess != null) OnRewardedVideoSuccess(id);
     }
 
     /// <summary>
     /// It is being called by HTML5 SDK when the rewarded video failed.
     /// </summary>
-    void RewardedVideoFailureCallback()
+    void RewardedVideoFailureCallback(string id)
     {
         _isRewardedVideoLoaded = false;
         
-        if (OnRewardedVideoFailure != null) OnRewardedVideoFailure();
+        if (OnRewardedVideoFailure != null) OnRewardedVideoFailure(id);
     }
 
     /// <summary>
