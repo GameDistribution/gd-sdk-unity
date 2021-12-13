@@ -12,6 +12,9 @@
           case "SDK_GAME_PAUSE":
             SendMessage("GameDistribution", "PauseGameCallback");
             break;
+          case "SDK_REWARDED_WATCH_COMPLETE":
+            SendMessage("GameDistribution", "RewardedCompleteCallback");
+            break;
           case "SDK_ERROR":
             break;
         }

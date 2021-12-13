@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public Text gameControlText;
     public Text rewardedAdText;
+    public Text rewardPlayerText;
 
     void Awake()
     {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
         GameDistribution.OnPreloadRewardedVideo += OnPreloadRewardedVideo;
         GameDistribution.OnRewardedVideoSuccess += OnRewardedVideoSuccess;
         GameDistribution.OnRewardedVideoFailure += OnRewardedVideoFailure;
+        GameDistribution.OnRewardGame += OnRewardGame;
     }
 
     public void OnResumeGame()
@@ -28,15 +30,19 @@ public class GameManager : MonoBehaviour
         // PAUSE MY GAME
         gameControlText.text = "GAME PAUSED";
     }
-
+    public void OnRewardGame()
+    {
+        // REWARD PLAYER HERE
+        rewardPlayerText.text = "Give Reward Here.";
+    }
     public void OnRewardedVideoSuccess()
     {
-        rewardedAdText.text = "Rewarded video succeeded.";
+        rewardedAdText.text = "Rewarded video succeeded...";
     }
 
     public void OnRewardedVideoFailure()
     {
-        rewardedAdText.text = "Rewarded video failed.";
+        rewardedAdText.text = "Rewarded video failed...";
     }
 
     public void OnPreloadRewardedVideo(int loaded)

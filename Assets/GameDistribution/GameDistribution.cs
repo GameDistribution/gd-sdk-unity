@@ -12,6 +12,7 @@ public class GameDistribution : MonoBehaviour
 
     public static Action OnResumeGame;
     public static Action OnPauseGame;
+    public static Action OnRewardGame;
     public static Action OnRewardedVideoSuccess;
     public static Action OnRewardedVideoFailure;
     public static Action<int> OnPreloadRewardedVideo;
@@ -99,6 +100,14 @@ public class GameDistribution : MonoBehaviour
     void PauseGameCallback()
     {
         if (OnPauseGame != null) OnPauseGame();
+    }
+
+    /// <summary>
+    /// It is being called by HTML5 SDK when the game should should give reward.
+    /// </summary>
+    void RewardedCompleteCallback()
+    {
+        if (OnRewardGame != null) OnRewardGame();
     }
 
     /// <summary>

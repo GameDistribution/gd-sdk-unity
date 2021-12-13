@@ -52,6 +52,7 @@ public class ExampleClass: MonoBehaviour {
         GameDistribution.OnPreloadRewardedVideo += OnPreloadRewardedVideo;
         GameDistribution.OnRewardedVideoSuccess += OnRewardedVideoSuccess;
         GameDistribution.OnRewardedVideoFailure += OnRewardedVideoFailure;
+        GameDistribution.OnRewardGame += OnRewardGame;
     }
 
     public void OnResumeGame()
@@ -62,6 +63,11 @@ public class ExampleClass: MonoBehaviour {
     public void OnPauseGame()
     {
         // PAUSE MY GAME
+    }
+    
+    public void OnRewardGame()
+    {
+        // REWARD PLAYER HERE
     }
 
     public void OnRewardedVideoSuccess()
