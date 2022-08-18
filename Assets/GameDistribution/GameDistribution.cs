@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
-
+using System.Text.RegularExpressions;	
 public class GameDistribution : MonoBehaviour
 {
     public static GameDistribution Instance;
@@ -25,6 +25,8 @@ public class GameDistribution : MonoBehaviour
 
     [DllImport("__Internal")]
     private static extern void SDK_ShowAd(string adType);
+    [DllImport("__Internal")]
+    private static extern void SDK_SendGameEvent(string options);
 
     private bool _isRewardedVideoLoaded = false;
 
@@ -84,6 +86,25 @@ public class GameDistribution : MonoBehaviour
         catch (EntryPointNotFoundException e)
         {
             Debug.LogWarning("GD Preload failed. Make sure you are running a WebGL build in a browser:" + e.Message);
+        }
+    }
+
+    internal void SendGameEvent(GameData gameData) {
+        try
+        {
+            int level = Int32.Parse(Regex.Replace(gameData.Level, "[^0-9]", ""));
+            int score = Int32.Parse(Regex.Replace(gameData.Score, "[^0-9]", ""));
+            var obj = new GameSendEvent();
+            var data = new GameSendEventData();
+            data.level = level;  
+            data.score = score;  
+            obj.data =data;
+            obj.eventName = "game_event";
+            SDK_SendGameEvent(JsonUtility.ToJson(obj));
+        }
+        catch (EntryPointNotFoundException e)
+        {
+            Debug.LogWarning("GD SendGameEvent failed. Make sure you are running a WebGL build in a browser:" + e.Message);
         }
     }
     /// <summary>
