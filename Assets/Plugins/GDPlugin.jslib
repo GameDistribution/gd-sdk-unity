@@ -62,7 +62,22 @@
         }
       });
     }
-  }
+  },
+
+  SDK_SendGameEvent : function(options) {
+    options = Pointer_stringify(options);
+    if (typeof gdsdk !== "undefined" && typeof gdsdk.sendEvent !== "undefined" && typeof options !== "undefined") {
+      gdsdk.sendEvent(options)
+      .then(function(response){
+       
+        console.log("Game event post message sent Succesfully...")
+        
+      })
+      .catch(function(error){
+        console.log(error.message)
+      });
+    }
+  } 
 };
 
 mergeInto(LibraryManager.library, functions);
