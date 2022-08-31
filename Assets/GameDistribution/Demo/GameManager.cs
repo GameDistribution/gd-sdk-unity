@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public Text rewardedAdText;
     public Text rewardPlayerText;
 
+    public Text scoreText;
+    public Text levelText;
+
     void Awake()
     {
         GameDistribution.OnResumeGame += OnResumeGame;
@@ -64,5 +67,13 @@ public class GameManager : MonoBehaviour
     public void PreloadRewardedAd()
     {
         GameDistribution.Instance.PreloadRewardedAd();
+    }
+
+    public void SendGameEvent()
+    {
+        GameData gameData = new GameData();
+        gameData.Level = levelText.text;
+        gameData.Score = scoreText.text;
+        GameDistribution.Instance.SendGameEvent(gameData);
     }
 }
