@@ -71,9 +71,23 @@ public class GameManager : MonoBehaviour
 
     public void SendGameEvent()
     {
-        GameData gameData = new GameData();
-        gameData.Level = levelText.text;
-        gameData.Score = scoreText.text;
-        GameDistribution.Instance.SendGameEvent(gameData);
+        //You can push your data here how ever you want 
+        ////////////////////////          Example 1          ////////////////////////
+        // int level = Int32.Parse(Regex.Replace(levelText, "[^0-9]", ""));
+        // int score = Int32.Parse(Regex.Replace(scoreText, "[^0-9]", ""));
+        // var obj = new EventData<GameEventData>();
+        // var data = new GameEventData();
+        // data.level = level;
+        // data.score = score;
+        // obj.data = data;
+        // obj.eventName = "game_event";
+        ////////////////////////          Example 2          ////////////////////////
+        var obj = new EventData<MileStoneData>();
+        var data = new MileStoneData();
+        data.isAuthorized = true;
+        data.milestoneDescription = "Test Description";
+        obj.data = data;
+        obj.eventName = "track-milestone";
+        GameDistribution.Instance.SendEvent(JsonUtility.ToJson(obj));
     }
 }

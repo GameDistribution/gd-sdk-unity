@@ -64,7 +64,7 @@
     }
   },
 
-  SDK_SendGameEvent : function(options) {
+  SDK_SendEvent : function(options) {
     options = Pointer_stringify(options);
     if (typeof gdsdk !== "undefined" && typeof gdsdk.sendEvent !== "undefined" && typeof options !== "undefined") {
       gdsdk.sendEvent(options)
