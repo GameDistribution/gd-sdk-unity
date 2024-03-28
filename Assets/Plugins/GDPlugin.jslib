@@ -17,6 +17,8 @@
             break;
           case "SDK_ERROR":
             break;
+          default:
+            SendMessage("GameDistribution", "EventCallback", event.name);
         }
       }
     };

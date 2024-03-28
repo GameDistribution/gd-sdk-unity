@@ -10,6 +10,7 @@ public class GameDistribution : MonoBehaviour
 
     public string GAME_KEY = "YOUR_GAME_KEY_HERE";
 
+    public static Action<string> OnEvent;
     public static Action OnResumeGame;
     public static Action OnPauseGame;
     public static Action OnRewardGame;
@@ -152,6 +153,14 @@ public class GameDistribution : MonoBehaviour
         _isRewardedVideoLoaded = (loaded == 1);
 
         if (OnPreloadRewardedVideo != null) OnPreloadRewardedVideo(loaded);
+    }
+
+    /// <summary>
+    /// It is being called by HTML5 SDK when it any event triggered
+    /// </summary>
+    void EventCallback(string eventData)
+    {
+        if (OnEvent != null) OnEvent(eventData);
     }
 
     public bool IsRewardedVideoLoaded()

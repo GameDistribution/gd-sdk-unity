@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         GameDistribution.OnRewardedVideoSuccess += OnRewardedVideoSuccess;
         GameDistribution.OnRewardedVideoFailure += OnRewardedVideoFailure;
         GameDistribution.OnRewardGame += OnRewardGame;
+        GameDistribution.OnEvent += OnEvent;
     }
 
     public void OnResumeGame()
@@ -52,6 +53,10 @@ public class GameManager : MonoBehaviour
     {
         // FEEDBACK ABOUT PRELOADED AD
         rewardedAdText.text = loaded == 1 ? "Rewarded video has been loaded." : "Rewarded video couldn't be loaded.";
+    }
+    public void OnEvent(string eventData)
+    {
+        rewardedAdText.text = eventData;
     }
 
     public void ShowAd()
