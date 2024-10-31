@@ -1,6 +1,6 @@
 ﻿var functions = {
   SDK_Init: function(gameKey) {
-    gameKey = Pointer_stringify(gameKey);
+    gameKey = UTF8ToString(gameKey);
     window["GD_OPTIONS"] = {
       debug: false, // Enable debugging console. This will set a value in local storage as well, remove this value if you don't want debugging at all. You can also call it by running gdsdk.openConsole() within your browser console.
       gameId: gameKey, // Your gameId which is unique for each one of your games; can be found at your Gamedistribution.com account.
@@ -50,7 +50,7 @@
 
   SDK_ShowAd: function(adType) {
     if (typeof gdsdk !== "undefined" && typeof gdsdk.showAd !== "undefined") {
-      adType=Pointer_stringify(adType)||gdsdk.AdType.Interstitial;
+      adType=UTF8ToString(adType)||gdsdk.AdType.Interstitial;
 
       gdsdk.showAd(adType)
       .then(function(response){
@@ -67,7 +67,7 @@
   },
 
   SDK_SendEvent : function(options) {
-    options = Pointer_stringify(options);
+    options = UTF8ToString(options);
     if (typeof gdsdk !== "undefined" && typeof gdsdk.sendEvent !== "undefined" && typeof options !== "undefined") {
       gdsdk.sendEvent(options)
       .then(function(response){
