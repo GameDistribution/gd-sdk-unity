@@ -50,7 +50,7 @@
 
   SDK_ShowAd: function(adType) {
     if (typeof gdsdk !== "undefined" && typeof gdsdk.showAd !== "undefined") {
-      adType=UTF8ToString(adType)||gdsdk.AdType.Interstitial;
+      adType = UTF8ToString(adType)||gdsdk.AdType.Interstitial;
 
       gdsdk.showAd(adType)
       .then(function(response){
