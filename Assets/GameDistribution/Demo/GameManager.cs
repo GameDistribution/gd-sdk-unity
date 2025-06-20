@@ -95,4 +95,24 @@ public class GameManager : MonoBehaviour
         obj.eventName = "track-milestone";
         GameDistribution.Instance.SendEvent(JsonUtility.ToJson(obj));
     }
+
+    public void ExecuteStoreAction()
+    {
+        try
+        {
+            var obj = new ActionData<PayloadData>();
+            var data = new PayloadData();
+
+            obj.actionName = "api.consume";
+            data.sku = "ss-enhance-shield-5";
+            data.quantity = 3;
+
+            GameDistribution.Instance.SendEvent(JsonUtility.ToJson(obj));
+
+        }
+        catch
+        {
+            Debug.LogWarning("GD ExecuteStoreAction failed. Make sure you are running a WebGL build in a browser:" + e.Message);
+        }
+    }
 }

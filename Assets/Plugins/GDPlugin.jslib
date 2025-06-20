@@ -79,6 +79,21 @@
         console.log(error.message)
       });
     }
+  }
+
+  SDK_ExecuteStoreAction: function(options){
+    options = UTF8ToString(options);
+    if (typeof gdsdk !== "undefined" && typeof options !== "undefined") {
+      gdsdk.executeStoreAction(options)
+      .then(function(response){
+       
+        console.log("Game store action post message sent Succesfully...")
+        
+      })
+      .catch(function(error){
+        console.log(error.message)
+      });
+    }
   } 
 };
 
