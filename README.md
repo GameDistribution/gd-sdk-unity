@@ -11,7 +11,7 @@ Gamedistribution.com is the biggest broker of high quality, cross-platform games
 
 Running into any issues?
 
-Check out the F.A.Q. within the Wiki of the github repository before mailing to support@gamedistribution.com.
+Check out the F.A.Q. within the Wiki of the github repository before mailing to [here](https://azerion-gamedistribution.atlassian.net/servicedesk/customer/portals).
 
 ## Implementation within games
 
